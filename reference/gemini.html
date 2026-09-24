@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitta Vision — Design, Conforto e Detalhes</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..600;1,400..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       RESET & VARIÁVEIS GLOBAIS
+       ========================================== */
+    :root {
+      --bg-primary: #F9F8F6;
+      --bg-secondary: #EFECE6;
+      --bg-dark: #121212;
+      --text-main: #1A1918;
+      --text-muted: #66635E;
+      --text-light: #F9F8F6;
+      --accent: #A3724C;
+      --border-color: #E2DFD8;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --container-width: 1280px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ==========================================
+       TIPOGRAFIA E ELEMENTOS REUTILIZÁVEIS
+       ========================================== */
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    /* Botões */
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--text-main);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      background-color: #33312E;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--text-main);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--text-main);
+      color: var(--bg-primary);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================
+       HEADER / NAV
+       ========================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(249, 248, 246, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 223, 216, 0.5);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* ==========================================
+       1. HERO
+       ========================================== */
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-secondary);
+      background-image:
+        linear-gradient(90deg, rgba(247,241,234,.95) 0%, rgba(247,241,234,.82) 34%, rgba(247,241,234,.45) 60%, rgba(247,241,234,.18) 100%),
+        url("../assets/images/banner.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    /* ==========================================
+       2. CONTEXTO / POR QUE IMPORTA
+       ========================================== */
+    .context {
+      padding: 120px 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .context-image {
+      height: 550px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .context-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .context-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-item {
+      padding: 1rem;
+      border-left: 2px solid var(--accent);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .highlight-item strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ==========================================
+       3. PRODUTO NO ROSTO
+       ========================================== */
+    .faces {
+      padding: 120px 0;
+    }
+
+    .faces-filter {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .filter-btn {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      color: var(--text-main);
+    }
+
+    .filter-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-main);
+    }
+
+    .faces-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .face-card {
+      position: relative;
+      height: 420px;
+      border-radius: 4px;
+      overflow: hidden;
+      group: hover;
+    }
+
+    .face-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .face-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .face-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+    }
+
+    .face-card-info h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .face-card-info p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* ==========================================
+       4. BENEFÍCIOS
+       ========================================== */
+    .benefits {
+      padding: 120px 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .benefit-card {
+      background: var(--bg-primary);
+      padding: 2.5rem 2rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .benefit-number {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .benefit-disclaimer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ==========================================
+       5. DETALHES DA ARMAÇÃO (SPECS)
+       ========================================== */
+    .details {
+      padding: 120px 0;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .details-image-container {
+      position: relative;
+    }
+
+    .details-image-main {
+      height: 500px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .details-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .spec-item {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .spec-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .spec-value {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .spec-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================
+       6. ESCOLHA SEU MODELO (CATÁLOGO)
+       ========================================== */
+    .catalog {
+      padding: 120px 0;
+      background-color: var(--bg-secondary);
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--bg-primary);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+      transform: translateY(-4px);
+    }
+
+    .product-image {
+      position: relative;
+      height: 320px;
+      background: #F4F2EE;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image img {
+      max-height: 100%;
+      object-fit: contain;
+      transition: var(--transition);
+    }
+
+    .product-info {
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-colors {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .color-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    /* ==========================================
+       7. EXPERIMENTAÇÃO / LOJAS
+       ========================================== */
+    .stores {
+      padding: 120px 0;
+    }
+
+    .stores-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .stores-image {
+      height: 500px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ==========================================
+       8. PROVA E CONFIANÇA
+       ========================================== */
+    .proof {
+      padding: 100px 0;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .proof .tag {
+      color: #D4A373;
+    }
+
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 3rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 500;
+      color: #D4A373;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      color: #E2DFD8;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ==========================================
+       9. FAQ (ACCORDION)
+       ========================================== */
+    .faq {
+      padding: 120px 0;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .accordion-header:hover {
+      color: var(--accent);
+    }
+
+    .accordion-icon {
+      font-size: 1.5rem;
+      font-weight: 300;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .accordion-body {
+      padding-bottom: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ==========================================
+       10. CTA FINAL & FOOTER
+       ========================================== */
+    .final-cta {
+      padding: 120px 0;
+      background-color: var(--bg-secondary);
+      text-align: center;
+    }
+
+    .final-cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ==========================================
+       RESPONSIVIDADE (MEDIA QUERIES)
+       ========================================== */
+    @media (max-width: 992px) {
+      .hero-grid, .context-grid, .details-grid, .stores-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero {
+        background-position: 63% center;
+        background-image:
+          linear-gradient(180deg, rgba(247,241,234,.62) 0%, rgba(247,241,234,.92) 68%, rgba(247,241,234,.98) 100%),
+          url("../assets/images/banner.jpg");
+      }
+
+      .hero-content {
+        max-width: 560px;
+      }
+
+      .faces-gallery, .benefits-grid, .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .proof-stats {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-links {
+        display: none; /* Em projeto real, adicionar menu hamburguer */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .faces-gallery, .benefits-grid, .catalog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .context-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .details-specs {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV / HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">Vitta Vision</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#contexto">A Escolha</a></li>
+          <li><a href="#modelos">Formatos</a></li>
+          <li><a href="#detalhes">Detalhes</a></li>
+          <li><a href="#colecao">Coleção</a></li>
+          <li><a href="#lojas">Lojas</a></li>
+        </ul>
+      </nav>
+      <a href="#lojas" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">Experimentar</a>
+    </div>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="tag">Lançamento Exclusivo</span>
+        <h1>Você precisa enxergar bem.</h1>
+        <h2>A armação é escolha sua.</h2>
+        <p>Conheça Vitta Vision. Armações que unem design, conforto e cuidado nos detalhes para acompanhar você todos os dias.</p>
+        <div class="btn-group">
+          <a href="#colecao" class="btn btn-primary">Ver os modelos</a>
+          <a href="#lojas" class="btn btn-secondary">Encontrar uma loja</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. POR QUE A ESCOLHA IMPORTA -->
+  <section class="context" id="contexto">
+    <div class="container context-grid">
+      <div class="context-image">
+        <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=1000&auto=format&fit=crop" alt="Pessoa utilizando óculos Vitta Vision">
+      </div>
+      <div class="context-content">
+        <span class="tag">Importância da Escolha</span>
+        <h2 class="section-title">Você vai usar seus óculos por horas.</h2>
+        <p class="section-subtitle">E, quando eles fazem parte de todos os seus dias, cada detalhe começa a importar.</p>
+        
+        <div class="context-highlights">
+          <div class="highlight-item">
+            <strong>Peso</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Leveza contínua sem marcas.</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Encaixe</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Anatomia perfeita na ponte nasal.</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Proporção</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Harmonia direta com o seu rosto.</span>
+          </div>
+          <div class="highlight-item">
+            <strong>Conforto</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Uso prolongado sem pressão nas hastes.</span>
+          </div>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.95rem;">A armação não é só um detalhe do seu óculos. É parte da forma como você se vê — e como se sente usando.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. VITTA NO SEU ROSTO -->
+  <section class="faces" id="modelos">
+    <div class="container">
+      <span class="tag">Adequação Facial</span>
+      <h2 class="section-title">Encontre a Vitta que combina com você.</h2>
+      <p class="section-subtitle">Rostos diferentes pedem formatos, proporções e estilos diferentes. Veja os modelos em diferentes pessoas e descubra quais fazem mais sentido para você.</p>
+
+      <div class="faces-filter">
+        <button class="filter-btn active" onclick="filterFaces('todos')">Todos os Formatos</button>
+        <button class="filter-btn" onclick="filterFaces('redonda')">Redonda</button>
+        <button class="filter-btn" onclick="filterFaces('retangular')">Retangular</button>
+        <button class="filter-btn" onclick="filterFaces('classica')">Clássica</button>
+        <button class="filter-btn" onclick="filterFaces('marcante')">Marcante</button>
+      </div>
+
+      <div class="faces-gallery">
+        <div class="face-card" data-category="redonda">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Rosto Feminino - Formato Redondo">
+          <div class="face-card-info">
+            <h3>Vitta Round 01</h3>
+            <p>Ideal para linhas angulares</p>
+          </div>
+        </div>
+        <div class="face-card" data-category="retangular">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Rosto Masculino - Retangular">
+          <div class="face-card-info">
+            <h3>Vitta Square 02</h3>
+            <p>Estrutura firme e marcante</p>
+          </div>
+        </div>
+        <div class="face-card" data-category="classica">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" alt="Rosto Feminino - Clássico">
+          <div class="face-card-info">
+            <h3>Vitta Classic 01</h3>
+            <p>Proporção atemporal</p>
+          </div>
+        </div>
+        <div class="face-card" data-category="marcante">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop" alt="Rosto Masculino - Marcante">
+          <div class="face-card-info">
+            <h3>Vitta Bold 03</h3>
+            <p>Design de presença</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; text-align: center;">
+        <a href="#colecao" class="btn btn-secondary">Explorar os modelos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BENEFÍCIOS -->
+  <section class="benefits">
+    <div class="container">
+      <span class="tag">Atributos de Projeto</span>
+      <h2 class="section-title">Feita para fazer parte da rotina.</h2>
+
+      <div class="benefits-grid" style="margin-top: 3rem;">
+        <div class="benefit-card">
+          <div>
+            <div class="benefit-number">01</div>
+            <h3>Leve no rosto.</h3>
+            <p>Apenas 16 gramas. Conforto contínuo projetado para acompanhar mais horas do seu dia sem incômodos.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div>
+            <div class="benefit-number">02</div>
+            <h3>Pensada para o uso diário.</h3>
+            <p>Materiais de alta densidade e construção meticulosa escolhidos para unir funcionalidade pura e design contemporâneo.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div>
+            <div class="benefit-number">03</div>
+            <h3>Escolha do seu jeito.</h3>
+            <p>Diferentes formatos, cores e proporções para você encontrar a armação que combina perfeitamente com seu estilo.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div>
+            <div class="benefit-number">04</div>
+            <h3>Pronta para suas lentes.</h3>
+            <p>Modelos estruturalmente compatíveis com diferentes configurações, espessuras e tratamentos de lentes.*</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="benefit-disclaimer">*Compatibilidade sujeita à prescrição médica, às características das lentes e ao modelo escolhido. Consulte uma loja para avaliação técnica.</p>
+    </div>
+  </section>
+
+  <!-- 5. DETALHES DA ARMAÇÃO -->
+  <section class="details" id="detalhes">
+    <div class="container">
+      <span class="tag">Transparência Técnica</span>
+      <h2 class="section-title">Qualidade não precisa de adjetivo. <br><i style="font-weight: 400; color: var(--accent);">Precisa de detalhe.</i></h2>
+
+      <div class="details-grid" style="margin-top: 3rem;">
+        <div class="details-image-container">
+          <div class="details-image-main">
+            <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=1000&auto=format&fit=crop" alt="Close-up detalhe da armação Vitta Vision">
+          </div>
+        </div>
+
+        <div class="details-specs">
+          <div class="spec-item">
+            <div class="spec-label">Material</div>
+            <div class="spec-value">Acetato Bio-base</div>
+            <div class="spec-desc">Algodão e fibras vegetais de alta densidade. Hipoalergênico, biodegradável e ultra resistente.</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Peso Real</div>
+            <div class="spec-value">16 g</div>
+            <div class="spec-desc">Distribuição equilibrada de peso entre a ponte nasal e o apoio auricular.</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Construção</div>
+            <div class="spec-value">Dobradiças de 5 Tambores</div>
+            <div class="spec-desc">Engenharia alemã em aço inoxidável para abertura suave e estabilidade a longo prazo.</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Acabamento</div>
+            <div class="spec-value">Polimento Manual 32 Etapas</div>
+            <div class="spec-desc">Brilho profundo, textura orgânica e toque sedoso obtidos artesanalmente.</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Medidas</div>
+            <div class="spec-value">49 — 21 — 145 mm</div>
+            <div class="spec-desc">Lente — Ponte — Haste. Proporções padronizadas para excelente encaixe.</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Garantia</div>
+            <div class="spec-value">2 Anos Integrais</div>
+            <div class="spec-desc">Cobertura contra defeitos de fabricação e serviço vitalício de ajuste gratuito nas lojas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ESCOLHA SEU MODELO -->
+  <section class="catalog" id="colecao">
+    <div class="container">
+      <span class="tag">Catálogo Vitta</span>
+      <h2 class="section-title">Qual delas é a sua?</h2>
+      <p class="section-subtitle">Selecione o modelo que mais reflete a sua personalidade visual.</p>
+
+      <div class="catalog-grid">
+
+        <!-- Produto 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600&auto=format&fit=crop" alt="Vitta Vision 01">
+          </div>
+          <div class="product-info">
+            <div>
+              <h3 class="product-title">Vitta Vision 01</h3>
+              <div class="product-colors">
+                <span>Cores:</span>
+                <span class="color-swatch" style="background-color: #111;" title="Preto"></span>
+                <span class="color-swatch" style="background-color: #4a2f13;" title="Havana"></span>
+                <span class="color-swatch" style="background-color: #e5d3b3;" title="Champagne"></span>
+                <span style="font-size: 0.8rem; margin-left: 0.3rem;">Preto • Havana • Champagne</span>
+              </div>
+            </div>
+            <a href="#lojas" class="btn btn-secondary" style="width: 100%; text-align: center;">Ver Vitta Vision 01</a>
+          </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=600&auto=format&fit=crop" alt="Vitta Vision 02">
+          </div>
+          <div class="product-info">
+            <div>
+              <h3 class="product-title">Vitta Vision 02</h3>
+              <div class="product-colors">
+                <span>Cores:</span>
+                <span class="color-swatch" style="background-color: #111;" title="Preto"></span>
+                <span class="color-swatch" style="background-color: #634323;" title="Tartaruga"></span>
+                <span class="color-swatch" style="background-color: #d1b89d;" title="Nude"></span>
+                <span style="font-size: 0.8rem; margin-left: 0.3rem;">Preto • Tartaruga • Nude</span>
+              </div>
+            </div>
+            <a href="#lojas" class="btn btn-secondary" style="width: 100%; text-align: center;">Ver Vitta Vision 02</a>
+          </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1582142839970-2b93224fe87e?q=80&w=600&auto=format&fit=crop" alt="Vitta Vision 03">
+          </div>
+          <div class="product-info">
+            <div>
+              <h3 class="product-title">Vitta Vision 03</h3>
+              <div class="product-colors">
+                <span>Cores:</span>
+                <span class="color-swatch" style="background-color: #e8e8e8;" title="Cristal"></span>
+                <span class="color-swatch" style="background-color: #b87333;" title="Âmbar"></span>
+                <span class="color-swatch" style="background-color: #383e42;" title="Grafite"></span>
+                <span style="font-size: 0.8rem; margin-left: 0.3rem;">Cristal • Âmbar • Grafite</span>
+              </div>
+            </div>
+            <a href="#lojas" class="btn btn-secondary" style="width: 100%; text-align: center;">Ver Vitta Vision 03</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. EXPERIMENTAÇÃO / LOJAS -->
+  <section class="stores" id="lojas">
+    <div class="container stores-grid">
+      <div class="stores-content">
+        <span class="tag">Experimentação Presencial</span>
+        <h2 class="section-title">Na tela, você escolhe suas favoritas.<br><i style="font-weight: 400; color: var(--accent);">No rosto, você decide.</i></h2>
+        <p class="section-subtitle">Formato, proporção e encaixe ficam muito mais claros quando você experimenta.</p>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Conheça Vitta Vision em uma de nossas lojas físicas e veja de perto qual modelo combina melhor com seu tom de pele, formato de rosto e rotina.</p>
+        <a href="#lojas" class="btn btn-primary" onclick="alert('Localizador de lojas: Selecione sua cidade para encontrar a Vitta Eyewear mais próxima.')">Encontrar uma loja física</a>
+      </div>
+      <div class="stores-image">
+        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=1000&auto=format&fit=crop" alt="Atendimento e loja Vitta Vision">
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. PROVA E CONFIANÇA -->
+  <section class="proof">
+    <div class="container">
+      <span class="tag">Prova & Confiança</span>
+      <h2 class="section-title" style="color: white;">Escolha com mais confiança.</h2>
+
+      <div class="proof-stats">
+        <div>
+          <div class="stat-number">4,9 / 5</div>
+          <p class="testimonial-text">“Leve e incrivelmente confortável. É aquele tipo de óculos que você esquece que está usando ao longo do dia.”</p>
+          <span class="testimonial-author">— Mariana R., Cliente Verificada</span>
+        </div>
+        <div>
+          <div class="stat-number">2 Anos</div>
+          <p class="testimonial-text">“Garantia integral contra defeitos estruturais e serviço de ajuste e higienização ultrassônica gratuito.”</p>
+          <span class="testimonial-author">— Compromisso Vitta Eyewear</span>
+        </div>
+        <div>
+          <div class="stat-number">+12.000</div>
+          <p class="testimonial-text">“Pessoas atendidas e adaptadas com sucesso ao design e ergonomia das armações Vitta.”</p>
+          <span class="testimonial-author">— Clientes Atendidos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="faq">
+    <div class="container faq-container">
+      <span class="tag" style="text-align: center; display: block;">Tire suas dúvidas</span>
+      <h2 class="section-title" style="text-align: center;">Antes de escolher, talvez você queira saber.</h2>
+
+      <div style="margin-top: 3rem;">
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Posso colocar qualquer grau?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              Sim! Nossas armações foram projetadas estruturalmente para suportar desde graus baixos até prescrições mais altas (como miopias elevadas ou multifocais), mantendo a estabilidade e estética.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Como descubro o tamanho ideal para mim?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              Nas hastes de cada modelo Vitta constam as medidas em milímetros (Lente — Ponte — Haste). Você pode comparar com os óculos que já usa confortavelmente ou solicitar nosso guia visual de medidas nas lojas.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Posso experimentar antes de comprar?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              Com certeza. Incentivamos a visita a uma de nossas lojas parceiras ou físicas para testar a ergonomia, o peso real e a harmonia com seu rosto.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Quais lentes são compatíveis?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              Todas as categorias principais: visão simples, multifocais, lentes com filtro de luz azul, fotocromáticas e de alto índice de refração.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Existe garantia?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              Sim, oferecemos 2 anos de garantia integral contra qualquer vício de fabricação no acetato ou nas dobradiças, além de manutenção e ajustes vitalícios gratuitos.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Meu grau é alto. Posso usar qualquer modelo?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              A indicação pode variar conforme sua prescrição, as características do índice da lente e o modelo escolhido. Nossos especialistas na loja física ajudarão você a escolher a armação que disfarça melhor a espessura da lente.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CTA FINAL -->
+  <section class="final-cta">
+    <div class="container final-cta-content">
+      <span class="tag">Sua Próxima Escolha</span>
+      <h2 class="section-title">Tem uma Vitta para você descobrir.</h2>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Conheça os modelos, escolha suas favoritas e experimente de perto qual combina melhor com você.</p>
+      <div class="btn-group" style="justify-content: center;">
+        <a href="#colecao" class="btn btn-primary">Ver os modelos</a>
+        <a href="#lojas" class="btn btn-secondary">Encontrar uma loja</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div>
+        <strong style="font-family: var(--font-serif); letter-spacing: 0.1em; color: var(--text-main);">VITTA VISION</strong>
+        <p style="font-size: 0.8rem; margin-top: 0.2rem;">© 2026 Vitta Eyewear. Todos os direitos reservados.</p>
+      </div>
+      <div>
+        <p style="font-size: 0.8rem;">Design, Conforto e Qualidade em Eyewear.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // 1. Accordion do FAQ
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Fecha todos os itens
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.accordion-content').style.maxHeight = null;
+        });
+
+        // Se não estava ativo, abre
+        if (!isActive) {
+          item.classList.add('active');
+          const content = item.querySelector('.accordion-content');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // 2. Filtro da Galeria de Rostos
+    function filterFaces(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.face-card');
+      cards.forEach(card => {
+        if (category === 'todos' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
